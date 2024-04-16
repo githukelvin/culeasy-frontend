@@ -25,3 +25,11 @@
     </defs>
   </svg>
 </template>
+<style  scoped>
+svg{
+  width: 40px;
+  height: 40px;
+}
+</style>
+<script setup lang="ts">
+</script>

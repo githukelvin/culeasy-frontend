@@ -1,4 +1,5 @@
 <template>
+<div class="svg absolute right-0 bottom-0 ">
   <svg
     width="717"
     height="702"
@@ -25,4 +26,6 @@
       </filter>
     </defs>
   </svg>
+</div>
 </template>
+t>

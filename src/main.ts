@@ -1,5 +1,5 @@
+import  "./assets/SCSS/main.css"
 import './assets/index.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { InitVeeValidate } from './core/plugins/VeeValidate'

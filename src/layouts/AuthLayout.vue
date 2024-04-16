@@ -8,10 +8,9 @@
         <IconRectangle />
       </div>
       <div class="authdiv grid place-items-center">
-        <TransparentCard>
-          <RouterView />
-        </TransparentCard>
+        <RouterView />
       </div>
+      <BottomShape/>
     </div>
   </main>
 </template>
@@ -20,7 +19,9 @@
 import IconCuleasy from '@/components/icons/IconCuleasy.vue'
 import IconRectangle from '@/components/icons/IconRectangle.vue'
 import TransparentCard from '@/components/TransparentCard.vue'
-// import VTextInput from '@/components/VTextInput.vue'
+import BottomShape from '@/components/icons/BottomShape.vue'
+import VTextInput from '@/components/VTextInput.vue'
+import IconUser from '@/components/icons/IconUser.vue'
 </script>
 
 <style scoped></style>
