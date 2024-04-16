@@ -32,7 +32,9 @@
 </template>
 
 <style scoped>
-
+::placeholder{
+  color: #fff;
+}
 </style>
 <script setup lang="ts">
 import { Field, ErrorMessage } from 'vee-validate'
