@@ -10,7 +10,7 @@
       <div class="authdiv grid place-items-center">
         <RouterView />
       </div>
-      <BottomShape/>
+      <BottomShape />
     </div>
   </main>
 </template>

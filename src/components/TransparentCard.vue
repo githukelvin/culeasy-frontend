@@ -3,7 +3,6 @@
 <template>
   <div class="card p-[2em] w-9/12 relative z-10 flex flex-col gap-[1em] rounded-[30px]">
     <slot />
-
   </div>
 </template>
 

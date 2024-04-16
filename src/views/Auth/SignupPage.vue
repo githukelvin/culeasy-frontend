@@ -2,19 +2,11 @@
   <TransparentCard>
     <h1 class="font-[qsemibold] text-white text-[2em]">Create your account</h1>
     <VForm>
-      <VTextInput
-        name="username"
-        placeholder="Enter Username"
-        type="text"
-      >
-        <IconUser/>
+      <VTextInput name="username" placeholder="Enter Username" type="text">
+        <IconUser />
       </VTextInput>
-      <VTextInput
-        name="email"
-        placeholder="Enter Email"
-        type="email"
-      >
-        <IconEmail/>
+      <VTextInput name="email" placeholder="Enter Email" type="email">
+        <IconEmail />
       </VTextInput>
       <VTextInput
         name="phone"
@@ -22,26 +14,32 @@
         type="text"
         datamaska="+254 ### #######"
       >
-        <icon-phone/>
+        <icon-phone />
       </VTextInput>
-      <VTextInput
-        name="password"
-        placeholder="Enter Password"
-        type="password"
-      >
-        <IconPassword/>
+      <VTextInput name="password" placeholder="Enter Password" type="password">
+        <IconPassword />
       </VTextInput>
 
-     <div class="flex flex-col gap-[1em] actions">
-       <ButtonComponent>
-         Create Account Now
-       </ButtonComponent>
+      <SignUpGoogle />
+      <div class="flex flex-row py-[1em]">
+        <input
+          type="checkbox"
+          class="appearance-none w-[25px] gap-[1em] h-[25px] bg-[#FF9E8C]"
+          name=""
+          id=""
+        />
+        <p class="font-[qregular] text-2xl text-white">I agree to terms and conditions</p>
+      </div>
+      <div class="flex flex-col gap-[1em] actions">
+        <ButtonComponent> Create Account Now </ButtonComponent>
 
-
-       <router-link to="/login" class="text-white font-[qsemibold] text-center  rounded-[25px] py-[1em]  bg-[#FF9E8C] w-full ">
-         Already have account? Login
-       </router-link >
-     </div>
+        <router-link
+          to="/login"
+          class="text-white font-[qsemibold] text-xl text-center rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
+        >
+          Already have account? Login
+        </router-link>
+      </div>
     </VForm>
   </TransparentCard>
 </template>
@@ -55,6 +53,7 @@ import IconPassword from '@/components/icons/IconPassword.vue'
 import { Form as VForm } from 'vee-validate'
 import IconPhone from '@/components/icons/IconPhone.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
+import SignUpGoogle from '@/components/Widgets/SignUpGoogle.vue'
 </script>
 
 <style scoped></style>

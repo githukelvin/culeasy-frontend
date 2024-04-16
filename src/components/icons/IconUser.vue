@@ -6,11 +6,10 @@
     />
   </svg>
 </template>
-<style  scoped>
-svg{
+<style scoped>
+svg {
   width: 40px;
   height: 40px;
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
