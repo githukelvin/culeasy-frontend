@@ -1,6 +1,6 @@
 <template>
   <TransparentCard>
-    <h1>Create your account</h1>
+    <h1 class="font-[qsemibold] text-white text-[2em]">Create your account</h1>
     <VForm>
       <VTextInput
         name="username"
@@ -32,13 +32,13 @@
         <IconPassword/>
       </VTextInput>
 
-     <div class="flex flex-col gap-[.5em] actions">
+     <div class="flex flex-col gap-[1em] actions">
        <ButtonComponent>
-         Sign Up
+         Create Account Now
        </ButtonComponent>
 
 
-       <router-link to="/login" class="text-white text-center mt-[2em] rounded-[25px] py-[1em]  bg-[#FF9E8C] w-full ">
+       <router-link to="/login" class="text-white font-[qsemibold] text-center  rounded-[25px] py-[1em]  bg-[#FF9E8C] w-full ">
          Already have account? Login
        </router-link >
      </div>
