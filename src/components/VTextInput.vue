@@ -31,10 +31,8 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-::placeholder {
-  color: #fff;
-}
+<style scoped>
+
 </style>
 <script setup lang="ts">
 import { Field, ErrorMessage } from 'vee-validate'

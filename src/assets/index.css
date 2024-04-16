@@ -53,3 +53,9 @@
     font-display: swap;
   }
 }
+@layer components{
+  ::placeholder {
+    @apply font-[qregular] text-[#fff] text-[1.2em]
+  }
+
+}
