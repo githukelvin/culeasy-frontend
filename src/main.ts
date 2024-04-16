@@ -9,9 +9,8 @@ import router from './router'
 
 const app = createApp(App)
 
-
 InitVeeValidate()
 app.use(createPinia())
 app.use(router)
 
-app.mount('#app'
+app.mount('#app')

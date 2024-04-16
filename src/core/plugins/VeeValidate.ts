@@ -1,10 +1,10 @@
-import {configure } from "vee-validate"
+import { configure } from 'vee-validate'
 
-export function  InitVeeValidate(){
+export function InitVeeValidate() {
   configure({
-    validateOnBlur:true,
-    validateOnChange:true,
-    validateOnInput:true,
-    validateOnModelUpdate:true
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnInput: true,
+    validateOnModelUpdate: true
   })
 }
