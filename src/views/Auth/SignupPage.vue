@@ -21,10 +21,10 @@
       </VTextInput>
 
       <SignUpGoogle />
-      <div class="flex flex-row py-[1em]">
+      <div class="flex flex-row py-[1em] gap-[1em] items-center">
         <input
           type="checkbox"
-          class="appearance-none w-[25px] gap-[1em] h-[25px] bg-[#FF9E8C]"
+          class="appearance-none w-[25px]  h-[25px] bg-[#FF9E8C]"
           name=""
           id=""
         />
