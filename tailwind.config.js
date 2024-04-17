@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     extend: {},
-    fontFamily:{
-
+    colors:{
+      'darkPurple':"#38071A"
     }
   },
   plugins: [],

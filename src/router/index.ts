@@ -1,6 +1,17 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
+  // Home routes
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/HomePage.vue'),
+    meta: {
+      pageTitle: 'Home'
+    }
+  },
+
+  // Auth Routes
   {
     path: '/',
     component: () => import('@/layouts/AuthLayout.vue'),
@@ -21,10 +32,7 @@ const routes: Array<RouteRecordRaw> = [
           pageTitle: 'Sign Up'
         }
       }
-    ],
-    meta: {
-      pageTitle: 'Home'
-    }
+    ]
   }
 ]
 

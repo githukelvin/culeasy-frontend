@@ -32,7 +32,7 @@
 </template>
 
 <style scoped>
-::placeholder{
+::placeholder {
   color: #fff;
 }
 </style>

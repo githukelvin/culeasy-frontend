@@ -52,10 +52,49 @@
     font-style: normal;
     font-display: swap;
   }
-}
-@layer components{
-  ::placeholder {
-    @apply font-[qregular] text-[#fff] text-[1.2em]
+
+  @font-face {
+    font-family: 'Causten';
+    src:
+      url('./fonts/Causten-Black.woff2') format('woff2'),
+      url('./fonts/Causten-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
   }
 
+  @font-face {
+    font-family: 'cregular';
+    src:
+      url('./fonts/Causten-Regular.woff2') format('woff2'),
+      url('./fonts/Causten-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'cbold';
+    src:
+      url('./fonts/Causten-Bold.woff2') format('woff2'),
+      url('./fonts/Causten-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'cmedium';
+    src:
+      url('Causten-Medium.woff2') format('woff2'),
+      url('Causten-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+@layer components {
+  ::placeholder {
+    @apply font-[qregular] text-[#fff] text-[1.2em];
+  }
 }
