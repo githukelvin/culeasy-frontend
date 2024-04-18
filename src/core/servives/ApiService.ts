@@ -22,4 +22,12 @@ class ApiService {
       `Token ${JwtService.getToken()}`
     ApiService.vueInstance.axios.defaults.headers.common['Accept'] = 'application/json'
   }
+  //   description send the Get HTTP request
+  public static query(resource: string, params: any): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.get(resource, params)
+  }
+
+  public static get(resource: string, slug = '' as string): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.get(`${resource}/${slug}`)
+  }
 }

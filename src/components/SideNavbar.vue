@@ -3,37 +3,51 @@
     <nav class="p-[1.5em]">
       <ul class="flex lg:flex-col lg:gap-[2.5em]">
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-white" to="/dhome"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/dhome"
             >Home</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/dashboard"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/dashboard"
             >Dashboard</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/calculator"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/calculator"
             >Currency Calculator</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/history"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/history"
             >History</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/quickfx"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/quickfx"
             >QuickFX</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/settings"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/settings"
             >Settings</RouterLink
           >
         </li>
         <li>
-          <RouterLink class="font-[qmedium] leadind-6 text-[1.3em] text-lightgray" to="/profile"
+          <RouterLink
+            class="font-[qmedium] leadind-6 text-[1.3em] text-white hover:text-darkPurple"
+            to="/profile"
             >Profile</RouterLink
           >
         </li>
@@ -45,7 +59,7 @@
       Need help?
     </button>
 
-    <button class="bg-transparent w-fit cursor-pointer font-[cbold] text-white text-2xl">
+    <button class="bg-transparent w-fit cursor-pointer font-[cbold] mb-1em text-white text-2xl">
       Log Out
     </button>
   </div>

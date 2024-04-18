@@ -12,9 +12,9 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-[15vw_auto]">
+    <div class="grid grid-cols-[15vw_auto] gap-[5em]">
       <SideNavbar />
-      <div class="bg-black w-vw flex flex-col gap-[5em]">
+      <div class="bg-black flex flex-col">
         <RouterView />
       </div>
     </div>

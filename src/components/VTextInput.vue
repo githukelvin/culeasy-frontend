@@ -1,5 +1,5 @@
 <template>
-  <div class="inputField flex flex-col gap-4">
+  <div class="inputField flex flex-col gap-1">
     <!--  Begin:input   -->
     <div
       class="field py-3 px-[1em] w-full flex flex-row gap-[1.5em] border-[1px] rounded-[15px] border-white"
@@ -24,7 +24,7 @@
     <!--    Error message::start-->
     <div class="message">
       <div class="info">
-        <ErrorMessage :name="name" />
+        <ErrorMessage class="text-[red] capitalize font-[cmedium] text-xl" :name="name" />
       </div>
     </div>
     <!--    Errormessage:end-->

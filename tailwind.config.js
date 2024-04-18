@@ -12,7 +12,8 @@ export default {
       'light':"#FF9E8C",
       'white':"#fff",
       'lightgray':"#CBD4E6",
-      'darkgray':"#7C8DB0"
+      'darkgray':"#7C8DB0",
+      'whitegray':"#FFFFFF4D"
     },
 
   },

@@ -1,7 +1,7 @@
 <template>
   <TransparentCard>
     <h1 class="font-[qsemibold] text-white text-[2em]">Create your account</h1>
-    <VForm>
+    <VForm class="flex flex-col gap-3" :validation-schema="registration">
       <VTextInput name="username" placeholder="Enter Username" type="text">
         <IconUser />
       </VTextInput>
@@ -16,9 +16,14 @@
       >
         <icon-phone />
       </VTextInput>
-      <VTextInput name="password" placeholder="Enter Password" type="password">
-        <IconPassword />
-      </VTextInput>
+      <div class="grid grid-cols-2 gap-3">
+        <VTextInput name="password" placeholder="Enter Password" type="password">
+          <IconPassword />
+        </VTextInput>
+        <VTextInput name="cpassword" placeholder="Re-Enter Password" type="password">
+          <IconPassword />
+        </VTextInput>
+      </div>
 
       <SignUpGoogle />
       <div class="flex flex-row py-[1em] gap-[1em] items-center">
@@ -54,6 +59,17 @@ import { Form as VForm } from 'vee-validate'
 import IconPhone from '@/components/icons/IconPhone.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import SignUpGoogle from '@/components/Widgets/SignUpGoogle.vue'
+import * as Yup from 'yup'
+
+const registration = Yup.object().shape({
+  username: Yup.string().required(),
+  email: Yup.string().required().email(),
+  phone: Yup.string().required(),
+  password: Yup.string().required().min(8),
+  cpassword: Yup.string()
+    .required()
+    .oneOf([Yup.ref('password')], 'Password must Match')
+})
 </script>
 
 <style scoped></style>

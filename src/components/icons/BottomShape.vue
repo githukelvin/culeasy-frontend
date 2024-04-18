@@ -1,5 +1,5 @@
 <template>
-  <div class="svg absolute right-0 bottom-0">
+  <div class="svg">
     <svg
       width="717"
       height="702"
@@ -28,4 +28,10 @@
     </svg>
   </div>
 </template>
-t>
+<style scoped>
+svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+</style>

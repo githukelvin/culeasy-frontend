@@ -1,7 +1,7 @@
 <template>
   <TransparentCard>
     <h1 class="font-[qsemibold] text-[2em] text-white">Login to your Culeasy Account</h1>
-    <VForm>
+    <VForm :validation-schema="login" class="flex gap-5 flex-col">
       <VTextInput name="email" placeholder="Enter Email" type="email">
         <IconEmail />
       </VTextInput>
@@ -32,6 +32,12 @@ import IconPassword from '@/components/icons/IconPassword.vue'
 import IconEmail from '@/components/icons/IconEmail.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import SignUpGoogle from '@/components/Widgets/SignUpGoogle.vue'
+import * as Yup from 'yup'
+
+const login = Yup.object().shape({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(8).required()
+})
 </script>
 
 <style scoped></style>
