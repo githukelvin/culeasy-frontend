@@ -1,7 +1,27 @@
 <template>
-  <header>
+  <header class="container flex flex-row items-center py-[1em] justify-between">
     <div class="logo">
-<IconBlack/>
+      <IconBlack />
+    </div>
+    <div class="navbar">
+      <nav>
+        <ul class="flex flex-row gap-[2em]">
+          <li>
+            <RouterLink exact-active-class="text-light" to="/" class="font-[qregular] text-[1.1em]"
+              >Home</RouterLink
+            >
+          </li>
+          <li><RouterLink to="/about" class="font-[qregular] text-[1.1em]">About</RouterLink></li>
+          <li><RouterLink to="/login" class="font-[qregular] text-[1.1em]">Sign In</RouterLink></li>
+          <li>
+            <RouterLink
+              to="/sign-up"
+              class="font-[qregular] text-[1.1em] bg-light p-[1em] rounded-xl"
+              >Sign Up</RouterLink
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 </template>
@@ -10,4 +30,8 @@
 import IconBlack from '@/components/icons/IconBlack.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+header {
+  background: white;
+}
+</style>

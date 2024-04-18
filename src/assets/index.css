@@ -86,9 +86,39 @@
   @font-face {
     font-family: 'cmedium';
     src:
-      url('Causten-Medium.woff2') format('woff2'),
-      url('Causten-Medium.woff') format('woff');
+      url('./fonts/Causten-Medium.woff2') format('woff2'),
+      url('./fonts/Causten-Medium.woff') format('woff');
     font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'nbold';
+    src:
+      url('./fonts/Nunito-Bold.woff2') format('woff2'),
+      url('./fonts/Nunito-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'nextra';
+    src:
+      url('./fonts/Nunito-ExtraBold.woff2') format('woff2'),
+      url('./fonts/Nunito-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'nlight';
+    src:
+      url('./fonts/Nunito-Light.woff2') format('woff2'),
+      url('./fonts/Nunito-Light.woff') format('woff');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
   }

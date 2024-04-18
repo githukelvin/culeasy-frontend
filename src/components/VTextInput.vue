@@ -35,6 +35,9 @@
 ::placeholder {
   color: #fff;
 }
+input {
+  background: transparent;
+}
 </style>
 <script setup lang="ts">
 import { Field, ErrorMessage } from 'vee-validate'

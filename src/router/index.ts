@@ -10,6 +10,14 @@ const routes: Array<RouteRecordRaw> = [
       pageTitle: 'Home'
     }
   },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/AboutPage.vue'),
+    meta: {
+      pageTitle: 'About'
+    }
+  },
 
   // Auth Routes
   {
@@ -38,7 +46,9 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes: routes,
+  linkActiveClass: 'text-light',
+  linkExactActiveClass: 'text-light-700'
 })
 
 //
