@@ -1,18 +1,31 @@
 <template>
-  <div class="grid grid-cols-[25vw_75vw]">
-    <SideNavbar/>
-    <div class="bg-black w-vw h-svh">
-      <RouterView/>
+  <div class="h-svh bg-darkPurple">
+    <IconInner />
+    <div class="w-vw container py-[1.2em] flex flex-row justify-between">
+      <IconCuleasy />
+      <div class="flex flex-row gap-[2em] items-center">
+        <IconNotification />
+        <div
+          class="rounded-full w-[40px] h-[40px] bg-[url('../assets/images/Hero.png')] bg-center bg-cover border border-white"
+        ></div>
+        <p class="text-white font-[cregular] text-[1.3em]">Kelvin Githu</p>
+      </div>
     </div>
 
+    <div class="grid grid-cols-[15vw_auto]">
+      <SideNavbar />
+      <div class="bg-black w-vw flex flex-col gap-[5em]">
+        <RouterView />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 import SideNavbar from '@/components/SideNavbar.vue'
+import IconInner from '@/components/icons/IconInner.vue'
+import IconCuleasy from '@/components/icons/IconCuleasy.vue'
+import IconNotification from '@/components/icons/IconNotification.vue'
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

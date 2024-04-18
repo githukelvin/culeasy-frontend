@@ -29,7 +29,7 @@ let currency = ref()
               <form class="max-w-sm mx-auto">
                 <select
                   id="countries"
-                  class="bg-transparent  font-[cregular] text-[1em] text-darkgray py-2 px-4  rounded-md  focus:outline-none  block w-full"
+                  class="bg-transparent font-[cregular] text-[1em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
                 >
                   <option selected>Choose a location</option>
                   <option value="US">United States</option>
@@ -43,7 +43,6 @@ let currency = ref()
                   <option value="DE">Germany</option>
                 </select>
               </form>
-
             </div>
             <div
               class="currency flex flex-row items-center px-[1.5em] gap-[0.8em] w-full border-x border-lightgray"
@@ -51,9 +50,9 @@ let currency = ref()
               <form class="max-w-sm mx-auto">
                 <select
                   id="countries"
-                  class="bg-transparent  font-[cregular] text-[1em] text-darkgray py-2 px-4  rounded-md  focus:outline-none  block w-full"
+                  class="bg-transparent font-[cregular] text-[1em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
                 >
-                  <option selected>Choose a location</option>
+                  <option selected>Type of Currency</option>
                   <option value="US">United States</option>
                   <option value="US">United States</option>
                   <option value="US">United States</option>
@@ -76,7 +75,7 @@ let currency = ref()
               class="availability flex flex-row items-center px-[1em] gap-[0.8em] w-full border-lightgray"
             >
               <IconAvailability />
-              <p class="text-darkgray font-[cregular] text-[1.2em] font-[500]">Availability</p>
+              <p class="text-darkgray font-[cregular] text-[1em] font-[500]">Availability</p>
             </div>
           </div>
           <div class="btn">

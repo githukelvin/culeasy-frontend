@@ -8,7 +8,7 @@ export default {
     extend: {},
     colors:{
       transparent: 'transparent',
-      'darkPurple':"#38071A",
+      'darkPurple':"#38071A", //background: #38071A;
       'light':"#FF9E8C",
       'white':"#fff",
       'lightgray':"#CBD4E6",

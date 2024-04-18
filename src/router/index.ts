@@ -18,6 +18,21 @@ const routes: Array<RouteRecordRaw> = [
       pageTitle: 'About'
     }
   },
+  // dashboard routes
+  {
+    path: '/',
+    component: () => import('@/layouts/MainMenuLayout.vue'),
+    children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('@/views/dashboards/ProfilePage.vue'),
+        meta: {
+          pageTitle: 'Profile'
+        }
+      }
+    ]
+  },
 
   // Auth Routes
   {
