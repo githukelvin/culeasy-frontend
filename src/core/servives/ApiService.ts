@@ -26,8 +26,27 @@ class ApiService {
   public static query(resource: string, params: any): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.get(resource, params)
   }
-
+  // send thr get request http request
   public static get(resource: string, slug = '' as string): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.get(`${resource}/${slug}`)
   }
+  //   description set the post http
+  public static post(resource: string, params: any): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.post(`${resource}`, params)
+  }
+  //   description set put HTTP
+  public static put(resource: string, params: any): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.put(`${resource}`, params)
+  }
+  //   description set update HTTP
+  public static update(resource: string, slug: string, params: any): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.put(`${resource}/${slug}`, params)
+  }
+
+  //   description send DELETE HTTP request
+  public static delete(resource: string): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.delete(resource)
+  }
 }
+
+export default ApiService
