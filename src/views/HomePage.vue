@@ -33,11 +33,6 @@ let currency = ref()
                 >
                   <option selected>Choose a location</option>
                   <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
                   <option value="CA">Canada</option>
                   <option value="FR">France</option>
                   <option value="DE">Germany</option>
@@ -53,15 +48,10 @@ let currency = ref()
                   class="bg-transparent font-[cregular] text-[1em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
                 >
                   <option selected>Type of Currency</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
+                  <option value="US">Dollars</option>
+                  <option value="CA">Canadian Dollar</option>
+                  <option value="FR">Francs</option>
+                  <option value="DE">Euro</option>
                 </select>
               </form>
             </div>
