@@ -23,8 +23,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: () => import('@/layouts/MainMenuLayout.vue'),
-    meta:{
-      middleware:"auth"
+    meta: {
+      middleware: 'auth'
     },
     children: [
       {
@@ -70,36 +70,31 @@ const router = createRouter({
   linkExactActiveClass: 'text-light-700'
 })
 
-
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
   const store = useAuthStore()
 
   // current page view title
-  document.title = `${to.meta.pageTitle} - ${import.meta.env.VITE_APP_NAME}`;
+  document.title = `${to.meta.pageTitle} - ${import.meta.env.VITE_APP_NAME}`
 
   store.verifyAuth()
 
-//   before page access check if page requires authentication
+  //   before page access check if page requires authentication
 
-  if(to.meta.middleware =="auth"){
-    if (store.isAuthenticated){
+  if (to.meta.middleware == 'auth') {
+    if (store.isAuthenticated) {
       next()
+    } else {
+      next({ name: 'login' })
     }
-    else{
-      next({name:"login"})
-    }
-  }else{
+  } else {
     next()
   }
 
   window.scrollTo({
-    top:0,
-    left:0,
-    behavior:"smooth"
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
   })
-
 })
-
-
 
 export default router

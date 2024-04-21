@@ -12,18 +12,19 @@
             <div
               class="rounded-full w-[100px] h-[100px] bg-[url('../assets/images/Hero.png')] bg-center bg-cover border border-white"
             ></div>
-            <ul class="flex flex-col mt-[2em] gap-[.5em]">
+            <ul class="flex flex-col mt-[2em] gap-[.5em]" v-if="uData">
               <li class="font-[qmedium] leading-10 text-white text-2xl">
-                Name: <span class="font-[qbold] text-xl leading-3">Kelvin Githu</span>
+                Name: <span class="font-[qbold] text-xl leading-3">{{ uData.name }}</span>
               </li>
               <li class="font-[qmedium] leading-10 text-white text-2xl">
-                Email: <span class="font-[qbold] text-xl leading-3">kelvingithu09@gmail.com</span>
+                Email: <span class="font-[qbold] text-xl leading-3">{{ uData.email }}</span>
               </li>
               <li class="font-[qmedium] leading-10 text-white text-2xl">
                 Country: <span class="font-[qbold] text-xl leading-3">Kenya</span>
               </li>
               <li class="font-[qmedium] leading-10 text-white text-2xl">
-                Phone: <span class="font-[qbold] text-xl leading-3">+254700349970</span>
+                Phone:
+                <span class="font-[qbold] text-xl leading-3">{{ uData.phone_number }}</span>
               </li>
               <li class="font-[qmedium] leading-10 text-white text-2xl">
                 Transactions: <span class="font-[qbold] text-xl leading-3">3325</span>
@@ -32,9 +33,11 @@
                 User ratings: <span class="font-[qbold] text-xl leading-3">7</span>
               </li>
               <li class="font-[qmedium] leading-10 text-whitegray text-2xl">
-                Registration date: <span class="font-[qbold] text-xl leading-3">12/03/2024</span>
+                Registration date:
+                <span class="font-[qbold] text-xl leading-3">{{ uData.created_at }}</span>
               </li>
             </ul>
+            <h1 v-else >loading</h1>
           </div>
           <div class="flex flex-col pr-[1em] justify-between">
             <RouterLink
@@ -55,25 +58,20 @@ import IconPen from '@/components/icons/IconPen.vue'
 import ImageComponent from '@/components/ImageComponent.vue'
 import ApiService from '@/core/servives/ApiService'
 import { onMounted, ref } from 'vue'
-import axios from 'axios'
 
+let uData = ref(null)
 
-const uData = ref({})
-const uError = ref({})
-
-const idUser = localStorage.getItem("id_user") || ''
-const TOKEN = localStorage.getItem("id_token") || ''; // Replace with your Bearer token
-// Set headers
-const headers = {
-  'Content-Type': 'application/json',
-  'Authorization': `Bearer ${TOKEN}`
-};
 // Make GET request
-const {data} = await axios.get(`users/${idUser}`, { headers })
-
-
-uData.value = data
-console.log(uData.value)
+onMounted(async () => {
+  try {
+    const idUser = localStorage.getItem('id_user') || ''
+    const { data } = await ApiService.get('users', idUser);
+    uData.value = data.user;
+    console.log(uData.value);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }
+});
 </script>
 
 <style scoped>

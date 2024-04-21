@@ -59,12 +59,16 @@
       Need help?
     </button>
 
-    <button class="bg-transparent w-fit cursor-pointer font-[cbold] mb-1em text-white text-2xl">
+    <button  @click="store.logout()" class="bg-transparent w-fit cursor-pointer font-[cbold] mb-1em text-white text-2xl">
       Log Out
     </button>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/auth'
+
+const store = useAuthStore()
+</script>
 
 <style scoped></style>

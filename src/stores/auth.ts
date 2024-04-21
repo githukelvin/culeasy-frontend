@@ -31,14 +31,14 @@ export const useAuthStore = defineStore('auth', () => {
     JwtService.destroyToken()
     user.value = {} as User
     errors.value = {}
-    window.localStorage.removeItem("id_user")
+    window.localStorage.removeItem('id_user')
   }
 
   function login(credentials: User) {
     return ApiService.post('login', credentials)
       .then(({ data }) => {
         setAuth(data)
-        window.localStorage.setItem("id_user",data.user.id)
+        window.localStorage.setItem('id_user', data.user.id)
       })
       .catch(({ response }) => {
         setError(response.data)
@@ -58,7 +58,7 @@ export const useAuthStore = defineStore('auth', () => {
       })
   }
   function verifyAuth() {
-    if (JwtService.getToken()!=null) {
+    if (JwtService.getToken() != null) {
       ApiService.setHeader()
     } else {
       purgeAuth()
