@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-[#38071A] relative w-vw p-[2em]">
+  <main class="bg-[#38071A] relative w-vw min-h-svh p-[2em]">
     <BottomShape />
 
     <div class="container mx-auto grid grid-cols-2 w-vw">

@@ -12,6 +12,7 @@
             >
           </li>
           <li><RouterLink to="/about" class="font-[qregular] text-[1.1em]">About</RouterLink></li>
+          <li><RouterLink to="/about" class="font-[qregular] text-[1.1em]">Contact</RouterLink></li>
           <li><RouterLink to="/login" class="font-[qregular] text-[1.1em]">Sign In</RouterLink></li>
           <li>
             <RouterLink

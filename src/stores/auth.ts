@@ -36,10 +36,12 @@ export const useAuthStore = defineStore('auth', () => {
   function login(credentials: User) {
     return ApiService.post('login', credentials)
       .then(({ data }) => {
+        console.log(data)
         setAuth(data)
       })
       .catch(({ response }) => {
-        setError(response)
+        console.log(response)
+        setError(response.data)
       })
   }
 
@@ -52,17 +54,17 @@ export const useAuthStore = defineStore('auth', () => {
         setAuth(data)
       })
       .catch(({ response }) => {
-        setError(response)
+        setError(response.data)
       })
   }
   function verifyAuth() {
     if (JwtService.getToken()) {
-      ApiService.setHeaders()
+      ApiService.setHeader()
     } else {
       purgeAuth()
     }
   }
-  return{
+  return {
     errors,
     user,
     login,

@@ -13,10 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@sweetalert2/theme-dark": "^5.0.16",
     "axios": "^1.6.8",
     "maska": "^2.1.11",
     "pinia": "^2.1.7",
-    "sweetalert2": "^11.10.7",
+    "sweetalert2": "^11.10.8",
     "vee-validate": "^4.12.6",
     "vue": "^3.4.21",
     "vue-axios": "^3.5.2",

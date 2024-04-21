@@ -1,7 +1,12 @@
 <template>
   <TransparentCard>
     <h1 class="font-[qsemibold] text-[2em] text-white">Login to your Culeasy Account</h1>
-    <VForm :validation-schema="login" class="flex gap-5 flex-col">
+    <VForm
+      novalidate
+      @submit="onSubmitLogin"
+      :validation-schema="login"
+      class="flex gap-5 flex-col"
+    >
       <VTextInput name="email" placeholder="Enter Email" type="email">
         <IconEmail />
       </VTextInput>
@@ -33,11 +38,54 @@ import IconEmail from '@/components/icons/IconEmail.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import SignUpGoogle from '@/components/Widgets/SignUpGoogle.vue'
 import * as Yup from 'yup'
+import { useAuthStore, type User } from '@/stores/auth'
+import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
 
 const login = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(8).required()
 })
+
+const store = useAuthStore()
+const router = useRouter()
+
+const onSubmitLogin = async (values: any) => {
+  values = values as User
+  //   clear  existing error
+  store.logout()
+
+  //   send login request
+  await store.login(values)
+
+  const error = Object.values(store.errors)
+  console.log(error)
+
+  if (error.length === 0) {
+    Swal.fire({
+      text: 'You have Sucessfully Logged In',
+      icon: 'success',
+      buttonsStyling: false,
+      heightAuto: false,
+      customClass: {
+        confirmButton: 'btn font-[cbold] bg-[#007200] py-[2em] p-[1em] rounded-xl  text-white'
+      }
+    }).then(() => {
+      router.push({ name: 'profile' })
+    })
+  } else {
+    Swal.fire({
+      text: error[0] as string,
+      icon: 'error',
+      buttonsStyling: false,
+      confirmButtonText: 'Try again!',
+      heightAuto: false,
+      customClass: {
+        confirmButton: 'btn font-[cbold] bg-[#d00000] p-[1em] rounded-xl text-white'
+      }
+    })
+  }
+}
 </script>
 
 <style scoped></style>

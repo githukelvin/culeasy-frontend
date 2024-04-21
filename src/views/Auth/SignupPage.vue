@@ -1,18 +1,23 @@
 <template>
   <TransparentCard>
     <h1 class="font-[qsemibold] text-white text-[2em]">Create your account</h1>
-    <VForm class="flex flex-col gap-3" :validation-schema="registration">
-      <VTextInput name="username" placeholder="Enter Username" type="text">
+    <VForm
+      class="flex flex-col gap-3"
+      @submit="onSubmitRegister"
+      novalidate
+      :validation-schema="registration"
+    >
+      <VTextInput name="name" placeholder="Enter Username" type="text">
         <IconUser />
       </VTextInput>
       <VTextInput name="email" placeholder="Enter Email" type="email">
         <IconEmail />
       </VTextInput>
       <VTextInput
-        name="phone"
+        name="phone_number"
         placeholder="Enter Phone Number"
         type="text"
-        datamaska="+254 ### #######"
+        datamaska="+254 ### ######"
       >
         <icon-phone />
       </VTextInput>
@@ -60,16 +65,59 @@ import IconPhone from '@/components/icons/IconPhone.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import SignUpGoogle from '@/components/Widgets/SignUpGoogle.vue'
 import * as Yup from 'yup'
+import { useAuthStore, type User } from '@/stores/auth'
+import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
 
 const registration = Yup.object().shape({
-  username: Yup.string().required(),
+  name: Yup.string().required(),
   email: Yup.string().required().email(),
-  phone: Yup.string().required(),
+  phone_number: Yup.string().required(),
   password: Yup.string().required().min(8),
   cpassword: Yup.string()
     .required()
     .oneOf([Yup.ref('password')], 'Password must Match')
 })
+
+const store = useAuthStore()
+const router = useRouter()
+
+const onSubmitRegister = async (values: any) => {
+  values = values as User
+  const credentials = { ...values, user_type: 'seller' }
+  //   clear all errors
+  store.errors = {}
+
+  //   registering
+  await store.register(credentials)
+
+  const error = Object.values(store.errors)
+
+  if (error.length === 0) {
+    Swal.fire({
+      text: 'Account Created Successfully',
+      icon: 'success',
+      buttonsStyling: false,
+      heightAuto: false,
+      customClass: {
+        confirmButton: 'btn font-[cbold] bg-[#007200] py-[2em] p-[1em] rounded-xl  text-white'
+      }
+    }).then(() => {
+      router.push({ name: 'login' })
+    })
+  } else {
+    Swal.fire({
+      text: error[0] as string,
+      icon: 'error',
+      buttonsStyling: false,
+      confirmButtonText: 'Try again!',
+      heightAuto: false,
+      customClass: {
+        confirmButton: 'btn font-[cbold] bg-[#d00000] p-[1em] rounded-xl text-white'
+      }
+    })
+  }
+}
 </script>
 
 <style scoped></style>
