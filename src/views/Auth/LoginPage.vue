@@ -68,7 +68,7 @@ const onSubmitLogin = async (values: any) => {
       buttonsStyling: false,
       heightAuto: false,
       customClass: {
-        confirmButton: 'btn font-[cbold] bg-[#007200] py-[2em] p-[1em] rounded-xl  text-white'
+        confirmButton: 'btn font-[cbold] bg-[#007200] px-[2em] p-[1em] rounded-xl  text-white'
       }
     }).then(() => {
       router.push({ name: 'profile' })

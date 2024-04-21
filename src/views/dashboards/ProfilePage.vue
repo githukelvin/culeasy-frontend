@@ -51,9 +51,29 @@
 </template>
 
 <script setup lang="ts">
-import TransparentCard from '@/components/TransparentCard.vue'
 import IconPen from '@/components/icons/IconPen.vue'
 import ImageComponent from '@/components/ImageComponent.vue'
+import ApiService from '@/core/servives/ApiService'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+
+
+const uData = ref({})
+const uError = ref({})
+
+const idUser = localStorage.getItem("id_user") || ''
+const TOKEN = localStorage.getItem("id_token") || ''; // Replace with your Bearer token
+// Set headers
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${TOKEN}`
+};
+// Make GET request
+const {data} = await axios.get(`users/${idUser}`, { headers })
+
+
+uData.value = data
+console.log(uData.value)
 </script>
 
 <style scoped>
@@ -64,5 +84,4 @@ import ImageComponent from '@/components/ImageComponent.vue'
     rgba(217, 217, 217, 0) 127.25%
   );
 }
-//background: #ffffff4d;
 </style>
