@@ -73,9 +73,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes,
-  linkActiveClass: 'text-light',
-  linkExactActiveClass: 'text-light-700'
+  routes: routes
 })
 
 router.beforeEach((to, from, next) => {

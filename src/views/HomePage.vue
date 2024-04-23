@@ -12,7 +12,7 @@ import SearchBar from '@/components/Widgets/SearchBar.vue'
     <div class="homecontent">
       <div class="hero w-vw">
         <HeroSection />
-        <div class="lg:w-9/12 lg:mx-auto">
+        <div class="lg:w-9/12 mt-[5em] lg:mx-auto">
           <SearchBar />
         </div>
       </div>
