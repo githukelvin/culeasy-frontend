@@ -3,9 +3,6 @@ import TheHeader from '@/components/globals/TheHeader.vue'
 import FooterComponent from '@/components/globals/FooterComponent.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import IconLocation from '@/components/icons/IconLocation.vue'
-import IconAvailability from '@/components/icons/IconAvailability.vue'
-import IconRate from '@/components/icons/IconRate.vue'
-import VTextInput from '@/components/VTextInput.vue'
 import { ref } from 'vue'
 
 let location = ref()
@@ -29,7 +26,7 @@ let currency = ref()
               <form class="max-w-sm mx-auto">
                 <select
                   id="countries"
-                  class="bg-transparent font-[cregular] text-[1em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
+                  class="bg-transparent font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
                 >
                   <option selected>Choose a location</option>
                   <option value="US">United States</option>
@@ -45,9 +42,9 @@ let currency = ref()
               <form class="max-w-sm mx-auto">
                 <select
                   id="countries"
-                  class="bg-transparent font-[cregular] text-[1em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
+                  class="bg-transparent font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
                 >
-                  <option selected>Type of Currency</option>
+                  <option selected>Currency you have ?</option>
                   <option value="US">Dollars</option>
                   <option value="CA">Canadian Dollar</option>
                   <option value="FR">Francs</option>
@@ -56,16 +53,27 @@ let currency = ref()
               </form>
             </div>
             <div
-              class="rate flex flex-row items-center px-[1.5em] gap-[0.8em] w-full border-x border-lightgray"
+              class="currency flex flex-row items-center px-[1.5em] gap-[0.8em] w-full border-x border-lightgray"
             >
-              <IconRate />
-              <p class="text-darkgray font-[cregular] text-[1em] font-[500]">Exchange rate</p>
+              <form class="max-w-sm mx-auto">
+                <select
+                  id="countries"
+                  class="bg-transparent font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
+                >
+                  <option selected>Currency you need ?</option>
+                  <option value="US">Dollars</option>
+                  <option value="CA">Canadian Dollar</option>
+                  <option value="FR">Francs</option>
+                  <option value="DE">Euro</option>
+                </select>
+              </form>
             </div>
             <div
-              class="availability flex flex-row items-center px-[1em] gap-[0.8em] w-full border-lightgray"
+              class="currency flex flex-row items-center px-[1.5em] gap-[0.8em] w-full border-x border-lightgray"
             >
-              <IconAvailability />
-              <p class="text-darkgray font-[cregular] text-[1em] font-[500]">Availability</p>
+              <form class="max-w-sm mx-auto">
+                <input type="text" name="money" placeholder="Amount" class="placeholder:text-darkgray w-vw bg-white text-darkgray placeholder:font-[cregular] placeholder:text-[1.2em]" id="">
+              </form>
             </div>
           </div>
           <div class="btn">
@@ -78,17 +86,12 @@ let currency = ref()
         </div>
       </div>
     </div>
+    <div class="flex flex-col gap-[1em]">
+
+    </div>
   </div>
   <FooterComponent />
 </template>
 <style scoped>
-.appearance-none {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 1.5em;
-}
+
 </style>
