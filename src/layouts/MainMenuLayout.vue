@@ -1,5 +1,5 @@
 <template>
-  <div class="h-svh bg-darkPurple">
+  <div class="min-h-svh bg-darkPurple">
     <IconInner />
     <div class="w-vw container py-[1.2em] flex flex-row justify-between">
       <IconCuleasy />

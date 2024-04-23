@@ -12,7 +12,9 @@ import SearchBar from '@/components/Widgets/SearchBar.vue'
     <div class="homecontent">
       <div class="hero w-vw">
         <HeroSection />
-        <SearchBar />
+        <div class="lg:w-9/12 lg:mx-auto">
+          <SearchBar />
+        </div>
       </div>
     </div>
     <div class="flex flex-col gap-[1em]"></div>

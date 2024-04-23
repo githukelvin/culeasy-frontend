@@ -23,6 +23,7 @@ class ApiService {
     ApiService.vueInstance = app
     ApiService.vueInstance.use(VueAxios, axios)
     ApiService.vueInstance.axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL
+    ApiService.vueInstance.axios.defaults.headers.common.Accept = '*'
   }
 
   /**

@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bottom-0 right-0 overflow-hidden">
+  <div class="svg">
     <svg
       width="512"
       height="460"
@@ -28,3 +28,10 @@
     </svg>
   </div>
 </template>
+<style scoped>
+svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+</style>

@@ -34,6 +34,14 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           pageTitle: 'Profile'
         }
+      },
+      {
+        path: '/results',
+        name: 'results',
+        component: () => import('@/views/dashboards/ResultsPage.vue'),
+        meta: {
+          pageTitle: 'Results'
+        }
       }
     ]
   },
