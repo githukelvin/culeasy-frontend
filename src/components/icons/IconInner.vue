@@ -28,5 +28,3 @@
     </svg>
   </div>
 </template>
-
-

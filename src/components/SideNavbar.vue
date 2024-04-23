@@ -59,7 +59,10 @@
       Need help?
     </button>
 
-    <button  @click="store.logout()" class="bg-transparent w-fit cursor-pointer font-[cbold] mb-1em text-white text-2xl">
+    <button
+      @click="store.logout()"
+      class="bg-transparent w-fit cursor-pointer font-[cbold] mb-1em text-white text-2xl"
+    >
       Log Out
     </button>
   </div>

@@ -34,4 +34,3 @@
     </svg>
   </div>
 </template>
-

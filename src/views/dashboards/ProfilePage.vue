@@ -37,7 +37,7 @@
                 <span class="font-[qbold] text-xl leading-3">{{ uData.created_at }}</span>
               </li>
             </ul>
-            <h1 v-else >loading</h1>
+            <h1 v-else>loading</h1>
           </div>
           <div class="flex flex-col pr-[1em] justify-between">
             <RouterLink
@@ -65,13 +65,13 @@ let uData = ref(null)
 onMounted(async () => {
   try {
     const idUser = localStorage.getItem('id_user') || ''
-    const { data } = await ApiService.get('users', idUser);
-    uData.value = data.user;
-    console.log(uData.value);
+    const { data } = await ApiService.get('users', idUser)
+    uData.value = data.user
+    console.log(uData.value)
   } catch (error) {
-    console.error('Error fetching user data:', error);
+    console.error('Error fetching user data:', error)
   }
-});
+})
 </script>
 
 <style scoped>
