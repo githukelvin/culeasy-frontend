@@ -85,14 +85,14 @@ const getCashpoints = async () => {
 watch(
   dataFromChild,
   (newValue, oldValue) => {
-    console.log('dataFromChild updated:', newValue, oldValue)
+    // console.log('dataFromChild updated:', newValue, oldValue)
   },
   // { deep: true }
 )
 
 onMounted(() => {
   getCashpoints()
-  console.log(AllCashpoints.value)
+  // console.log(AllCashpoints.value)
 })
 </script>
 
