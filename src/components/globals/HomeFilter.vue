@@ -2,7 +2,7 @@
   <div class="searchBox flex flex-row bg-white border-y border-lightgray">
 
     <form
-      class="flex flex-row bg-white "
+      class="flex flex-row bg-white"
       novalidate
       @submit.prevent="onClickSearch"
     >
@@ -71,13 +71,11 @@
           <!--        </form>-->
         </div>
       </div>
-      <div class="btn">
-        <input
-          type="submit"
-          value="Search"
-          @click="emitData"
-          class="font-[cmedium] bg-light cursor-pointer px-6 text-[1.2em] py-[.8em] rounded-[5px] text-white"
-        />
+      <div class="btn flex">
+        <RouterLink
+          to="results"
+          class="font-[cmedium] bg-light cursor-pointer px-6 text-[1.2em] py-[.8em] rounded-[5px] text-base text-white"
+        >Search</RouterLink>
       </div>
     </form>
   </div>

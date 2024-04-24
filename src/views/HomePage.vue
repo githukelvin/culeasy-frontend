@@ -4,6 +4,7 @@ import FooterComponent from '@/components/globals/FooterComponent.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import { ref } from 'vue'
 import SearchBar from '@/components/Widgets/SearchBar.vue'
+import HomeFilter from '@/components/globals/HomeFilter.vue'
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import SearchBar from '@/components/Widgets/SearchBar.vue'
       <div class="hero w-vw">
         <HeroSection />
         <div class="lg:w-9/12 mt-[5em] lg:mx-auto">
-          <SearchBar />
+          <HomeFilter/>
         </div>
       </div>
     </div>
