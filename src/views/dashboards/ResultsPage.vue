@@ -5,8 +5,9 @@
     </div>
     <div class="flex flex-col">
       <h1 class="font-[qbold] text-[2em] text-white">Results</h1>
-      <div class="flex flex-col gap-[1em]" v-if="AllCashpoints.length > 1">
-        <p>Data from child: {{ dataFromChild }}</p>
+<!--      v-if="AllCashpoints.length > 1"-->
+      <div class="flex flex-col gap-[1em]" >
+<!--        <p>Data from child: {{ dataFromChild }}</p>-->
 
         <ResultsCard
           v-for="Cashpoints of AllCashpoints"
@@ -14,10 +15,10 @@
           :results="Cashpoints"
         />
       </div>
-      <div class="flex flex-col gap-5" v-else>
-        <div class="border-white border"></div>
-        <LoadingPage />
-      </div>
+<!--      <div class="flex flex-col gap-5" v-else>-->
+<!--        <div class="border-white border"></div>-->
+<!--        <LoadingPage />-->
+<!--      </div>-->
     </div>
   </div>
 </template>
@@ -38,9 +39,9 @@ const dataFromChild = ref('')
 
 const handleChildDataUpdate = async (data: string) => {
   const dataApi = await dataStore.SearchData(data)
-  console.log(dataApi)
-  AllCashpoints.value = [] // Clear the AllCashpoints array
   AllCashpoints.value = [...dataApi] // Assign the new data to AllCashpoints
+
+  dataFromChild.value=data
 }
 // test
 
@@ -86,7 +87,7 @@ watch(
   (newValue, oldValue) => {
     console.log('dataFromChild updated:', newValue, oldValue)
   },
-  { deep: true }
+  // { deep: true }
 )
 
 onMounted(() => {

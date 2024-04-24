@@ -36,11 +36,7 @@ export const useDataStore = defineStore('data', () => {
   async function SearchData(search: any) {
     try {
       const { data: cashpointsData } = await axios.get('cashpoints');
-      const { data: exchangeRatesData } = await axios.get('https://culeasy.titan.africa/api/ex_rates/', {
-        headers: {
-          Authorization: 'Bearer 2|L595i4vmzUAZxeIQ3Gppa60Jt1fGhfIVHZsfofkk9656e1db'
-        }
-      });
+      const { data: exchangeRatesData } = await axios.get("ex_rates")
   
       const filteredCashpoints = cashpointsData.filter((cashpoint: any) => {
         const { location } = JSON.parse(cashpoint.location);
@@ -69,8 +65,8 @@ export const useDataStore = defineStore('data', () => {
         };
       });
   
-      console.log('Filtered Cashpoints:', filteredCashpoints);
-      console.log('Result:', result);
+      // console.log('Filtered Cashpoints:', filteredCashpoints);
+      // console.log('Result:', result);
   
       return result;
     } catch (e) {
