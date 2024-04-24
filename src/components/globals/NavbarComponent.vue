@@ -27,6 +27,11 @@
             >
           </li>
           <li>
+            <a href="https://beta.culeasy.com/" target="_blank" class="font-[qregular] text-[1.1em]"
+              >Bureas</a
+            >
+          </li>
+          <li>
             <RouterLink
               to="/sign-up"
               class="font-[qregular] text-[1.1em] bg-light p-[1em] rounded-xl"

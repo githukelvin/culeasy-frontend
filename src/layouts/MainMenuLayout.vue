@@ -38,7 +38,6 @@ onMounted(async () => {
     const idUser = localStorage.getItem('id_user') || ''
     const { data } = await ApiService.get('users', idUser)
     uData.value = data.user
-    console.log(uData.value)
   } catch (error) {
     console.error('Error fetching user data:', error)
   }

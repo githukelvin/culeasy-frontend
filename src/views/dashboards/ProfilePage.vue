@@ -5,14 +5,14 @@
       <div class="w-10/12 bg-white h-[3px]"></div>
     </div>
 
-    <div class="border border-white rounded-[30px] w-10/12">
+    <div class="border border-white rounded-[30px] w-10/12" v-if="uData">
       <div class="card p-[2em] relative z-10 flex flex-col gap-[1em] rounded-[30px]">
         <div class="flex flex-row justify-between w-vw">
           <div class="flex flex-row gap-[2em]">
             <div
               class="rounded-full w-[100px] h-[100px] bg-[url('../assets/images/Hero.png')] bg-center bg-cover border border-white"
             ></div>
-            <ul class="flex flex-col mt-[2em] gap-[.5em]" v-if="uData">
+            <ul class="flex flex-col mt-[2em] gap-[.5em]">
               <li class="font-[qmedium] leading-10 text-white text-2xl">
                 Name: <span class="font-[qbold] text-xl leading-3">{{ uData.name }}</span>
               </li>
@@ -37,7 +37,6 @@
                 <span class="font-[qbold] text-xl leading-3">{{ uData.created_at }}</span>
               </li>
             </ul>
-            <h1 v-else>loading</h1>
           </div>
           <div class="flex flex-col pr-[1em] justify-between">
             <RouterLink
@@ -50,6 +49,9 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <LoadingPage />
+    </div>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ import IconPen from '@/components/icons/IconPen.vue'
 import ImageComponent from '@/components/ImageComponent.vue'
 import ApiService from '@/core/servives/ApiService'
 import { onMounted, ref } from 'vue'
+import LoadingPage from '@/components/globals/LoadingPage.vue'
 
 let uData = ref(null)
 
@@ -67,7 +70,6 @@ onMounted(async () => {
     const idUser = localStorage.getItem('id_user') || ''
     const { data } = await ApiService.get('users', idUser)
     uData.value = data.user
-    console.log(uData.value)
   } catch (error) {
     console.error('Error fetching user data:', error)
   }
