@@ -29,43 +29,54 @@ export interface Location {
 }
 export const useDataStore = defineStore('data', () => {
   const search = ref<Search>({} as Search)
-  const AllCashpoints = ref([])
+  const AllCashpoints = ref(new Set())
   const AllCashpointsMeetingSearch = ref([])
   const searchDetails = ref()
 
   async function SearchData(search: any) {
-      // console.log(response.data)
     try {
-      const { data } = await axios.get('cashpoints')
-      // const response = await axios.get('ex_rates')
-      const options = {
-        method: 'GET',
-        url: 'https://culeasy.titan.africa/api/ex_rates/',
+      const { data: cashpointsData } = await axios.get('cashpoints');
+      const { data: exchangeRatesData } = await axios.get('https://culeasy.titan.africa/api/ex_rates/', {
         headers: {
           Authorization: 'Bearer 2|L595i4vmzUAZxeIQ3Gppa60Jt1fGhfIVHZsfofkk9656e1db'
         }
+      });
+  
+      const filteredCashpoints = cashpointsData.filter((cashpoint: any) => {
+        const { location } = JSON.parse(cashpoint.location);
+        return location === search.location;
+      });
+  
+      const matchingExchangeRate = exchangeRatesData.find(
+        (rate: any) => rate.currency_from === search.currHave && rate.currency_to === search.currHave
+      );
+  
+      if (matchingExchangeRate) {
+        filteredCashpoints.unshift(matchingExchangeRate);
       }
-
-      const response = await axios.get('ex_rates', { headers: options.headers })
-      for (const item of data) {
-        const locObject = JSON.parse(item.location)
-        if (locObject.location == search.location) {
-          AllCashpointsMeetingSearch.value.push(item)
-        }
-      }
-      for (let item of response.data) {
-        if (item.currency_from == search.currHave && item.currency_to == search.currHave) {
-          AllCashpointsMeetingSearch.value.unshift(item)
-        }
-      }
-
-     
+  
+      const result = filteredCashpoints.map((cashpoint: any) => {
+        const { id, name, phone_number, logo, location } = cashpoint;
+        const exchangeRate = exchangeRatesData.find((rate: any) => rate.cashpoint_id === id);
+        const imageLink = `https://beta.culeasy.com/assets/bureaudata/${logo}`;
+  
+        return {
+          id,
+          name,
+          phone_number,
+          logo: imageLink,
+          ...exchangeRate
+        };
+      });
+  
+      console.log('Filtered Cashpoints:', filteredCashpoints);
+      console.log('Result:', result);
+  
+      return result;
     } catch (e) {
-      console.error(e)
+      console.error(e);
+      return [];
     }
-    console.log(AllCashpointsMeetingSearch.value)
-    console.log(AllCashpoints.value)
-    return AllCashpoints.value
   }
   return {
     search,
@@ -73,6 +84,7 @@ export const useDataStore = defineStore('data', () => {
     // getData,
     // locations,
     // currencies,
+    AllCashpoints,
     searchDetails
   }
 })

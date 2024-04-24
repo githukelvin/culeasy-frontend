@@ -1,22 +1,18 @@
 <template>
-  <div class="lg:w-11/12 flex flex-col gap-4">
+  <div class="lg:w-11/12 flex flex-col gap-4 z-10">
     <div class="border-white border"></div>
-    <div class="grid grid-cols-[1fr_15em_15em] gap-8">
+    <div class="grid grid-cols-[1fr_15em_15em] gap-8" :results="results">
       <div class="grid grid-cols-2 gap-3">
         <div class="info">
-          <img
-            class="w-[18rem] h-[16rem] object-cover"
-            src="https://images.pexels.com/photos/164652/pexels-photo-164652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="image 1"
-          />
+          <img class="w-[18rem] h-[16rem] object-cover" :src="results.logo" :alt="results.name" />
         </div>
         <div class="details flex flex-col gap-12">
-          <h1 class="text-white font-[qbold] text-[1.6em]">Emy Exchange</h1>
+          <h1 class="text-white font-[qbold] text-[1.6em]">{{ results.name }}</h1>
           <p class="font-[qregular] text-white text-xl">
             100,000 usdt available
             <span class="font-[Causten] text-xl text-white">Limit $10</span>
           </p>
-          <p class="text-xl font-[qbold] text-white">+254 700349970</p>
+          <p class="text-xl font-[qbold] text-white">{{ results.phone_number }}</p>
         </div>
       </div>
       <div class="starsDistance flex flex-col gap-16">
@@ -38,7 +34,9 @@
           <p class="rounded-sm p-[.5em] font-[Causten] text-2xl bg-light">8.5</p>
         </div>
 
-        <p class="price font-[Causten] text-2xl font-[400] text-white text-right">KES 130/USD</p>
+        <p class="price font-[Causten] text-2xl font-[400] text-white text-right">
+          KES {{ results.rate }}
+        </p>
         <button
           class="text-white cursor-pointer font-[qbold] text-[1.5em] rounded bg-light py-3 px-5"
         >
@@ -51,6 +49,19 @@
 
 <script setup lang="ts">
 import IconStar from '@/components/icons/IconStar.vue'
+
+const props = defineProps({
+  results: {
+    id: Number,
+    name: String,
+    phone_number: String,
+    logo: String,
+    rate: String,
+    currency_from: String,
+    currency_to: String,
+    location: String
+  }
+})
 </script>
 
 <style scoped></style>

@@ -76,6 +76,7 @@
         <input
           type="submit"
           value="Search"
+          @click="emitData"
           class="font-[cmedium] bg-light cursor-pointer px-6 text-[1.2em] py-[.8em] rounded-[5px] text-white"
         />
       </div>
@@ -95,6 +96,19 @@ let locationSelected = ''
 let currencyNeeded = ''
 let currencyYouHave = ''
 let amount = ''
+const emit = defineEmits(['child-data-updated'])
+
+const emitData = () => {
+  const searchDetails = {
+    location: locationSelected,
+    currNeeded: currencyNeeded,
+    currHave: currencyYouHave,
+    amount: amount
+  }
+  emit('child-data-updated', searchDetails)
+}
+
+// context
 
 const onClickSearch = async () => {
   const searchDetails = {
@@ -103,9 +117,13 @@ const onClickSearch = async () => {
     currHave: currencyYouHave,
     amount: amount
   }
+  emitData()
   datastore.searchDetails = searchDetails
-  datastore.SearchData(searchDetails)
   // console.log(searchDetails)
+  // locationSelected = ''
+  // currencyNeeded = ''
+  // currencyYouHave = ''
+  // amount = ''
 }
 
 const locations = ref(new Set())
