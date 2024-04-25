@@ -124,8 +124,7 @@ interface LocationR {
   location: string;
 }
 
-const locations = ref<Set<LocationR>>(new Set());
-
+const locations = ref<Set<string>>(new Set());
 const currencies = ref<{ [key: string]: Currency }>({});
 
 const getData = async () => {
@@ -139,7 +138,8 @@ const getData = async () => {
 
       for (const item of data) {
         let locObject: Location = JSON.parse(item.location);
-        locations.value.add({location:locObject.location});
+        const loc = locObject.location
+        locations.value.add(loc);
       }
     } else {
       console.error('Invalid currencies data structure');
@@ -148,6 +148,9 @@ const getData = async () => {
     console.error(error);
   }
 };
+onMounted(() => {
+  getData()
+})
 </script>
 
 <style scoped></style>

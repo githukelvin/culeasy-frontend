@@ -28,7 +28,7 @@
           </li>
           <li>
             <a href="https://beta.culeasy.com/" target="_blank" class="font-[qregular] text-[1.1em]"
-              >Bureas</a
+              >Bureaus</a
             >
           </li>
           <li>
