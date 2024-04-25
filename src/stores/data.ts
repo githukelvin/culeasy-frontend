@@ -39,8 +39,11 @@ export const useDataStore = defineStore('data', () => {
       const { data: exchangeRatesData } = await axios.get("ex_rates")
   
       const filteredCashpoints = cashpointsData.filter((cashpoint: any) => {
-        const { location } = JSON.parse(cashpoint.location);
-        return location === search.location;
+        // const { location } = JSON.parse(cashpoint.location);
+        // const { location } = JSON.parse(cashpoint.location);
+        console.log(search)
+        return cashpoint.location === search.location;
+        // return location === search.location;
       });
   
       const matchingExchangeRate = exchangeRatesData.find(
@@ -65,7 +68,7 @@ export const useDataStore = defineStore('data', () => {
         };
       });
   
-      // console.log('Filtered Cashpoints:', filteredCashpoints);
+      console.log('Filtered Cashpoints:', filteredCashpoints);
       // console.log('Result:', result);
   
       return result;

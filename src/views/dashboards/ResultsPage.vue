@@ -39,7 +39,7 @@ const dataFromChild = ref('')
 const handleChildDataUpdate = async (data: string) => {
   const dataApi = await dataStore.SearchData(data)
   AllCashpoints.value = [...dataApi] // Assign the new data to AllCashpoints
-
+console.log(data)
   dataFromChild.value=data
 }
 // test

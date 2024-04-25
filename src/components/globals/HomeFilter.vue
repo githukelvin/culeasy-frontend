@@ -12,16 +12,29 @@
         >
           <IconLocation />
           <!--        <form class="max-w-sm mx-auto">-->
-          <select
-            id="countries"
-            v-model="locationSelected"
-            class="bg-transparent capitalize font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
-          >
-            <option disabled value="">Choose a location</option>
-            <option class="capitalize" v-for="(location,index) in locations" :key="index">
-              {{ location }}
-            </option>
-          </select>
+<!--          <select-->
+<!--            id="countries"-->
+<!--            v-model="locationSelected"-->
+<!--            class="bg-transparent capitalize font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"-->
+<!--          >-->
+<!--            <option disabled value="">Choose a location</option>-->
+<!--            <option class="capitalize" v-for="(location,index) in locations" :key="index">-->
+<!--              {{ location }}-->
+<!--            </option>-->
+<!--          </select>-->
+          <div class="relative">
+            <input
+              type="text"
+              v-model="searchQuery"
+              placeholder="Enter Location"
+              @input="filterData"
+              class="placeholder:text-darkgray w-vw bg-white text-darkgray placeholder:font-[cregular] placeholder:text-[1.2em]"
+              @focus="showList = true"
+            />
+            <ul class="absolute top-[2.7em] -left-12 cursor-pointer  w-[25em] bg-light rounded-2xl"  v-if="showList" @click="showList = false">
+              <li class="py-4 px-3 border-y-2 text-white font-[cregular] text-2xl cursor-pointer" v-for="(item,index) in filteredData" :key="index" @click="updateInput(item)">{{ item }}</li>
+            </ul>
+          </div>
           <!--        </form>-->
         </div>
         <div
@@ -83,7 +96,7 @@
 
 <script setup lang="ts">
 import IconLocation from '@/components/icons/IconLocation.vue'
-import { onMounted, ref, reactive } from 'vue'
+import { onMounted, ref, reactive, computed } from 'vue'
 import { type Location,type Search, useDataStore } from '@/stores/data'
 import axios from 'axios'
 
@@ -137,8 +150,11 @@ const getData = async () => {
       currencies.value = response.data.currencies as { [key: string]: Currency };
 
       for (const item of data) {
-        let locObject: Location = JSON.parse(item.location);
-        const loc = locObject.location
+        // let locObject: Location = JSON.parse(item.location);
+        console.log(item.location)
+        // let locObject: Location = item.location;
+        // const loc = locObject.location
+        const loc = item.location
         locations.value.add(loc);
       }
     } else {
@@ -147,6 +163,27 @@ const getData = async () => {
   } catch (error) {
     console.error(error);
   }
+};
+
+//testing
+const searchQuery = ref('');
+const showList = ref(false);
+
+
+const filteredData = computed(() => {
+  const locationArray = Array.from(locations.value);
+  return locationArray.filter((location) =>
+    location.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
+
+const filterData = () => {
+  // No need to do anything here as the filteredData computed property
+  // will automatically update based on the searchQuery value
+};
+
+const updateInput = (itemName:any) => {
+  searchQuery.value = itemName;
 };
 onMounted(() => {
   getData()
