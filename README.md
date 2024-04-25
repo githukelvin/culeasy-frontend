@@ -3,7 +3,7 @@
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
-
+<VirtualHost *:80>; ServerName www.yourdomain.com DocumentRoot "/var/www/html/culeasy/dist" Directory "/var/www/html/culeasy/dist"> AllowOverride All </Directory> </VirtualHost>```
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS
