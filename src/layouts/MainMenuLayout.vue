@@ -29,8 +29,13 @@ import IconCuleasy from '@/components/icons/IconCuleasy.vue'
 import IconNotification from '@/components/icons/IconNotification.vue'
 import { onMounted, ref } from 'vue'
 import ApiService from '@/core/servives/ApiService'
-
-let uData = ref(null)
+interface User{
+  name:string,
+email:string,
+phone_number:string,
+created_at:string,
+}
+let uData = ref<{[key:string]:User}>({})
 
 // Make GET request
 onMounted(async () => {

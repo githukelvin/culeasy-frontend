@@ -18,7 +18,7 @@
             class="bg-transparent capitalize font-[cregular] text-[1.2em] text-darkgray py-2 px-4 rounded-md focus:outline-none block w-full"
           >
             <option disabled value="">Choose a location</option>
-            <option class="capitalize" v-for="location in locations" :key="location.index">
+            <option class="capitalize" v-for="(location,index) in locations" :key="index">
               {{ location }}
             </option>
           </select>
@@ -97,41 +97,59 @@ let currencyYouHave = ''
 let amount = ''
 const emit = defineEmits(['child-data-updated'])
 
-const emitData = (searchDetails) => {
-
+const emitData = () => {
+  const searchDetails:Search = {
+    location: locationSelected,
+    currNeeded: currencyNeeded,
+    currHave: currencyYouHave,
+    amount: amount
+  }
   emit('child-data-updated', searchDetails)
 }
 
 // context
 
 const onClickSearch = async () => {
-  const searchDetails = {
-    location: locationSelected,
-    currNeeded: currencyNeeded,
-    currHave: currencyYouHave,
-    amount: amount
-  }
-  emitData(searchDetails)
-  datastore.searchDetails = searchDetails
+
+  emitData()
+  // datastore.searchDetails = searchDetails
 
 }
 
-const locations = ref(new Set())
-const currencies = ref(null)
+
+interface Currency {
+  symbol: string;
+  name: string;
+  id: number;
+}
+interface LocationR {
+  location: string;
+}
+
+const locations = ref<Set<string>>(new Set());
+const currencies = ref<{ [key: string]: Currency }>({});
 
 const getData = async () => {
   try {
-    const { data } = await axios.get('cashpoints')
-    const response = await axios.get('currencies')
-    currencies.value = response.data.currencies
-    for (const item of data) {
-      let locObject: Location = JSON.parse(item.location)
-      locations.value.add(locObject.location)
+    const { data } = await axios.get('cashpoints');
+    const response = await axios.get('currencies');
+
+    // Check if the response.data.currencies object exists and is an object
+    if (response.data.currencies && typeof response.data.currencies === 'object') {
+      currencies.value = response.data.currencies as { [key: string]: Currency };
+
+      for (const item of data) {
+        let locObject: Location = JSON.parse(item.location);
+        const loc = locObject.location
+        locations.value.add(loc);
+      }
+    } else {
+      console.error('Invalid currencies data structure');
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 onMounted(() => {
   getData()
 })

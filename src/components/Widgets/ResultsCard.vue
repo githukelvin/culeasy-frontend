@@ -1,7 +1,7 @@
 <template>
   <div class="lg:w-11/12 flex flex-col gap-4 z-10">
     <div class="border-white border"></div>
-    <div class="grid grid-cols-[1fr_15em_15em] gap-8" :results="results">
+    <div class="grid grid-cols-[1fr_15em_15em] gap-8">
       <div class="grid grid-cols-2 gap-3">
         <div class="info">
           <img class="w-[18rem] h-[16rem] object-cover" :src="results.logo" :alt="results.name" />
@@ -49,19 +49,16 @@
 
 <script setup lang="ts">
 import IconStar from '@/components/icons/IconStar.vue'
+import type { Cashpoint } from '@/stores/data';
+import { defineProps, type PropType } from 'vue';
+
 
 const props = defineProps({
   results: {
-    id: Number,
-    name: String,
-    phone_number: String,
-    logo: String,
-    rate: String,
-    currency_from: String,
-    currency_to: String,
-    location: String
-  }
-})
+    type: Object as PropType<Cashpoint>,
+    required: true,
+  },
+});
 </script>
 
 <style scoped></style>

@@ -61,8 +61,13 @@ import ImageComponent from '@/components/ImageComponent.vue'
 import ApiService from '@/core/servives/ApiService'
 import { onMounted, ref } from 'vue'
 import LoadingPage from '@/components/globals/LoadingPage.vue'
-
-let uData = ref(null)
+interface User{
+  name:string,
+email:string,
+phone_number:string,
+created_at:string,
+}
+let uData = ref<{[key:string]:User}>({})
 
 // Make GET request
 onMounted(async () => {

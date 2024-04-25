@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 const closeAll = () => {
-  document.querySelector('.home').style.display = 'none'
-}
+  const homeElement = document.querySelector('.home') as HTMLElement;
+  homeElement.style.display = 'none';
+};
 </script>
 
 <style scoped></style>
