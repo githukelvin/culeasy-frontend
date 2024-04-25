@@ -31,10 +31,9 @@ import LoadingPage from '@/components/globals/LoadingPage.vue'
 import axios from 'axios'
 import { ref, onMounted, watch, computed } from 'vue'
 const dataStore = useDataStore()
-// const AllCashpoints = ref([])
 const AllCashpoints = ref<Cashpoint[]>([]) // Explicitly define the type of AllCashpoints
 
-// test
+// get Data  from childcomponent Se
 const dataFromChild = ref('')
 
 const handleChildDataUpdate = async (data: string) => {
@@ -49,19 +48,15 @@ const handleChildDataUpdate = async (data: string) => {
 const getCashpoints = async () => {
   try {
     const { data } = await axios.get('cashpoints')
-    // const response = await axios.get('ex_rates')
   
 
     const response = await axios.get('ex_rates')
     // AllCashpointsMeetingSearch
     for (const Cashpoint of data) {
-      // console.log(Cashpoint)
       const cashpoint_idd = Cashpoint.id
       const { name, phone_number, logo, location } = Cashpoint
       for (let eitem of response.data) {
-        // const response = await axios.get('ex_rates', { headers: options.headers })
         const { rate, cashpoint_id, currency_from, currency_to } = eitem
-        // console.log('cashpoint id', cashpoint_idd, name, cashpoint_id)
         const imageLink = `https://beta.culeasy.com/assets/bureaudata/${logo}`
         if (cashpoint_id == cashpoint_idd) {
           const cashpointObject: Cashpoint = {
@@ -82,18 +77,17 @@ const getCashpoints = async () => {
     console.error(error)
   }
 }
-watch(
-  dataFromChild,
-  (newValue, oldValue) => {
-    // console.log('dataFromChild updated:', newValue, oldValue)
-  },
-  // { deep: true }
-)
+// watch(
+//   dataFromChild,
+//   (newValue, oldValue) => {
+//     // console.log('dataFromChild updated:', newValue, oldValue)
+//   },
+//   // { deep: true }
+// )
 
 onMounted(() => {
   getCashpoints()
-  // console.log(AllCashpoints.value)
 })
 </script>
 
-<style scoped></style>
+<style scoped></style>_newValue_oldValue

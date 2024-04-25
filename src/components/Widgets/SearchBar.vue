@@ -86,7 +86,7 @@
 <script setup lang="ts">
 import IconLocation from '@/components/icons/IconLocation.vue'
 import { onMounted, ref, reactive } from 'vue'
-import { type Location, useDataStore } from '@/stores/data'
+import { type Location,type Search, useDataStore } from '@/stores/data'
 import axios from 'axios'
 
 const datastore = useDataStore()
@@ -97,13 +97,8 @@ let currencyYouHave = ''
 let amount = ''
 const emit = defineEmits(['child-data-updated'])
 
-const emitData = () => {
-  const searchDetails = {
-    location: locationSelected,
-    currNeeded: currencyNeeded,
-    currHave: currencyYouHave,
-    amount: amount
-  }
+const emitData = (searchDetails) => {
+
   emit('child-data-updated', searchDetails)
 }
 
@@ -116,13 +111,9 @@ const onClickSearch = async () => {
     currHave: currencyYouHave,
     amount: amount
   }
-  emitData()
+  emitData(searchDetails)
   datastore.searchDetails = searchDetails
-  // console.log(searchDetails)
-  // locationSelected = ''
-  // currencyNeeded = ''
-  // currencyYouHave = ''
-  // amount = ''
+
 }
 
 const locations = ref(new Set())

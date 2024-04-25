@@ -116,11 +116,7 @@ const onClickSearch = async () => {
   }
   emitData()
   datastore.searchDetails = searchDetails
-  // console.log(searchDetails)
-  // locationSelected = ''
-  // currencyNeeded = ''
-  // currencyYouHave = ''
-  // amount = ''
+
 }
 
 const locations = ref(new Set())

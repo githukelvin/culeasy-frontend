@@ -5,8 +5,8 @@ import axios from 'axios'
 export interface Search {
   location: string
   currNeeded: string
-  currYouhave: string
-  amount: number
+  currHave: string
+  amount: string
 }
 export interface Cashpoint {
   id: number
