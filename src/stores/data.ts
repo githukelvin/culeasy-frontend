@@ -41,7 +41,6 @@ export const useDataStore = defineStore('data', () => {
       const filteredCashpoints = cashpointsData.filter((cashpoint: any) => {
         // const { location } = JSON.parse(cashpoint.location);
         // const { location } = JSON.parse(cashpoint.location);
-        console.log(search)
         return cashpoint.location === search.location;
         // return location === search.location;
       });
@@ -68,8 +67,6 @@ export const useDataStore = defineStore('data', () => {
         };
       });
   
-      console.log('Filtered Cashpoints:', filteredCashpoints);
-      // console.log('Result:', result);
   
       return result;
     } catch (e) {

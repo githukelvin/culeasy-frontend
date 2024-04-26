@@ -162,7 +162,6 @@ const getData = async () => {
 
       for (const item of data) {
         // let locObject: Location = JSON.parse(item.location);
-        console.log(item.location)
         // let locObject: Location = item.location;
         // const loc = locObject.location
         const loc = item.location
