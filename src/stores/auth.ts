@@ -50,6 +50,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   function logout() {
     purgeAuth()
+    router.push({ name: 'Home' })
+
   }
   function register(credentials: User) {
     return ApiService.post('users', credentials)
@@ -69,7 +71,7 @@ export const useAuthStore = defineStore('auth', () => {
             Authorization: `Bearer ${JwtService.getToken()}`
           }
         })
-        console.log(data)
+        // console.log(data)
         setAuth(data)
       } catch (error) {
         router.push({ name: 'login' })
