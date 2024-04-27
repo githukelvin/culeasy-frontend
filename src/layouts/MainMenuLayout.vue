@@ -50,7 +50,7 @@ onMounted(async () => {
     if (error.response.status === 401) {
       localStorage.removeItem('token')
       // Redirect to login page
-      router.push({ name: 'login' })
+      // router.push({ name: 'login' })
     }
   }
 })

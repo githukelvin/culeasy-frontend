@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import JwtService from '@/core/servives/JwtService'
 import ApiService from '@/core/servives/ApiService'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 export interface User {
   username: string
@@ -15,6 +17,7 @@ export const useAuthStore = defineStore('auth', () => {
   const errors = ref({})
   const user = ref<User>({} as User)
   const isAuthenticated = ref(!!JwtService.getToken())
+  const router = useRouter()
 
   function setAuth(authUser: any) {
     isAuthenticated.value = true
@@ -57,17 +60,35 @@ export const useAuthStore = defineStore('auth', () => {
         setError(response.data)
       })
   }
-  function verifyAuth() {
+  async function verifyAuth() {
     if (JwtService.getToken()) {
       ApiService.setHeader()
-      ApiService.post('verify-token', { api_token: JwtService.getToken() })
-        .then(({ data }) => {
-          setAuth(data)
+      try {
+        const { data } = await axios.get('/verify-token', {
+          headers: {
+            Authorization: `Bearer ${JwtService.getToken()}`
+          }
         })
-        .catch(({ response }) => {
-          setError(response.data.errors)
-          purgeAuth()
-        })
+        console.log(data)
+        setAuth(data)
+      } catch (error) {
+        router.push({ name: 'login' })
+
+        setError(error)
+        purgeAuth()
+      }
+
+      //   ApiService.get('verify-token')
+      //     .then(({ data }) => {
+      //       console.log(data)
+      //       setAuth(data)
+      //     }).catch(({ response }) => {
+      //       console.error(response);
+      //       setError(error)
+      //       purgeAuth()
+      // router.push({name:"login"})
+
+      //     })
     } else {
       purgeAuth()
     }

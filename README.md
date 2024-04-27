@@ -12,6 +12,20 @@ This template should help get you started developing with Vue 3 in Vite.
             ></span>
  </span>
 
+async function fetchData() {
+  const token = localStorage.getItem('sanctum_token'); // Replace with your storage method
+
+  try {
+    const response = await axios.get('/protected-data', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const submitButton = ref<HTMLButtonElement | null>(null);
 
