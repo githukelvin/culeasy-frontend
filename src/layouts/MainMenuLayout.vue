@@ -29,22 +29,29 @@ import IconCuleasy from '@/components/icons/IconCuleasy.vue'
 import IconNotification from '@/components/icons/IconNotification.vue'
 import { onMounted, ref } from 'vue'
 import ApiService from '@/core/servives/ApiService'
-interface User{
-  name:string,
-email:string,
-phone_number:string,
-created_at:string,
+import { useRouter } from 'vue-router'
+interface User {
+  name: string
+  email: string
+  phone_number: string
+  created_at: string
 }
-let uData = ref<{[key:string]:User}>({})
-
+let uData = ref<{ [key: string]: User }>({})
+const router = useRouter()
 // Make GET request
 onMounted(async () => {
   try {
     const idUser = localStorage.getItem('id_user') || ''
     const { data } = await ApiService.get('users', idUser)
     uData.value = data.user
-  } catch (error) {
-    console.error('Error fetching user data:', error)
+  } catch (error: any) {
+    // console.error('Error fetching user data:', error)
+
+    if (error.response.status === 401) {
+      localStorage.removeItem('token')
+      // Redirect to login page
+      router.push({ name: 'login' })
+    }
   }
 })
 </script>

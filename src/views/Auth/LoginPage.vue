@@ -15,7 +15,26 @@
         <IconPassword />
       </VTextInput>
       <div class="flex text-xl flex-col gap-[1em] actions">
-        <ButtonComponent> Login </ButtonComponent>
+        <!-- <ButtonComponent> -->
+          <button
+    class="text-white disabled:bg-[#FF9E8C]-400 flex items-center justify-center gap-6   text-xl font-[qsemibold] text-base rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
+    type="submit"
+    ref="submitButton"
+  >
+          <span class="font-[qsemibold] text-2xl">Login</span>
+
+          <div
+          class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-darkPurple border-e-transparent align-[-0.125em] text-success motion-reduce:animate-[spin_1.5s_linear_infinite]"  
+            role="status"
+            v-show="isLoading"
+          >
+            <span
+              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+              >Loading...</span
+            >
+          </div>
+        </button>
+        <!-- </ButtonComponent> -->
 
         <router-link
           to="/sign-up"
@@ -41,25 +60,35 @@ import * as Yup from 'yup'
 import { useAuthStore, type User } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
+import { ref } from 'vue'
 
 const login = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(8).required()
 })
-
 const store = useAuthStore()
 const router = useRouter()
-
+const submitButton = ref<HTMLButtonElement | null>(null)
+const isLoading= ref(false)
 const onSubmitLogin = async (values: any) => {
   values = values as User
+
+
   //   clear  existing error
   store.logout()
+
+  if (submitButton.value) {
+    // eslint-disable-next-line
+    submitButton.value!.disabled = true
+    // Activate indicator
+    isLoading.value = true
+    submitButton.value.setAttribute('data-kt-indicator', 'on')
+  }
 
   //   send login request
   await store.login(values)
 
   const error = Object.values(store.errors)
-  console.log(error)
 
   if (error.length === 0) {
     Swal.fire({
@@ -85,6 +114,12 @@ const onSubmitLogin = async (values: any) => {
       }
     })
   }
+  //Deactivate indicator
+  submitButton.value?.removeAttribute('data-kt-indicator')
+  // eslint-disable-next-line
+  submitButton.value!.disabled = false
+  isLoading.value = false
+
 }
 </script>
 

@@ -5,9 +5,9 @@
     </div>
     <div class="flex flex-col">
       <h1 class="font-[qbold] text-[2em] text-white">Results</h1>
-<!--      v-if="AllCashpoints.length > 1"-->
-      <div class="flex flex-col gap-[1em]" >
-<!--        <p>Data from child: {{ dataFromChild }}</p>-->
+      <!--      v-if="AllCashpoints.length > 1"-->
+      <div class="flex flex-col gap-[1em]">
+        <!--        <p>Data from child: {{ dataFromChild }}</p>-->
 
         <ResultsCard
           v-for="Cashpoints of AllCashpoints"
@@ -15,10 +15,10 @@
           :results="Cashpoints"
         />
       </div>
-<!--      <div class="flex flex-col gap-5" v-else>-->
-<!--        <div class="border-white border"></div>-->
-<!--        <LoadingPage />-->
-<!--      </div>-->
+      <!--      <div class="flex flex-col gap-5" v-else>-->
+      <!--        <div class="border-white border"></div>-->
+      <!--        <LoadingPage />-->
+      <!--      </div>-->
     </div>
   </div>
 </template>
@@ -39,15 +39,13 @@ const dataFromChild = ref('')
 const handleChildDataUpdate = async (data: string) => {
   const dataApi = await dataStore.SearchData(data)
   AllCashpoints.value = [...dataApi] // Assign the new data to AllCashpoints
-  dataFromChild.value=data
+  dataFromChild.value = data
 }
 // test
-
 
 const getCashpoints = async () => {
   try {
     const { data } = await axios.get('cashpoints')
-  
 
     const response = await axios.get('ex_rates')
     // AllCashpointsMeetingSearch
@@ -89,4 +87,5 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>_newValue_oldValue
+<style scoped></style>
+_newValue_oldValue

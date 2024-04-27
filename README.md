@@ -2,16 +2,34 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
-<VirtualHost *:80>
-    ServerName 165.22.214.131
-    ServerAlias Frontend
-    DocumentRoot /var/www/ht,l/culeasy/dist
 
-    <Directory /var/www/html/culeasy/dist>
-        AllowOverride All
-    </Directory>
-</VirtualHost>
+   <span class="indicator-label"> Continue </span>
+
+          <span class="indicator-progress">
+            Please wait...
+            <span
+              class="spinner-border spinner-border-sm align-middle ms-2"
+            ></span>
+ </span>
+
+
+const submitButton = ref<HTMLButtonElement | null>(null);
+
+  if (submitButton.value) {
+        // eslint-disable-next-line
+        submitButton.value!.disabled = true;
+        // Activate indicator
+        submitButton.value.setAttribute("data-kt-indicator", "on");
+      }
+
+## Recommended IDE Setup
+
+
+
+
+
+
+
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS

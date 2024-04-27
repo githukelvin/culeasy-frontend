@@ -49,16 +49,15 @@
 
 <script setup lang="ts">
 import IconStar from '@/components/icons/IconStar.vue'
-import type { Cashpoint } from '@/stores/data';
-import { defineProps, type PropType } from 'vue';
-
+import type { Cashpoint } from '@/stores/data'
+import { defineProps, type PropType } from 'vue'
 
 const props = defineProps({
   results: {
     type: Object as PropType<Cashpoint>,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 </script>
 
 <style scoped></style>

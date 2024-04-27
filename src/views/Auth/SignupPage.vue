@@ -41,8 +41,25 @@
         <p class="font-[qregular] text-2xl text-white">I agree to terms and conditions</p>
       </div>
       <div class="flex flex-col gap-[1em] actions">
-        <ButtonComponent> Create Account Now </ButtonComponent>
-
+        <!-- <ButtonComponent> Create Account Now </ButtonComponent> -->
+        <button
+    class="text-white disabled:bg-[#FF9E8C]-400 flex items-center justify-center gap-6   text-xl font-[qsemibold] text-base rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
+    type="submit"
+    ref="submitButton"
+  >
+          
+          <span class="font-[qsemibold] text-2xl">Register</span>
+          <div
+          class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-darkPurple border-e-transparent align-[-0.125em] text-success motion-reduce:animate-[spin_1.5s_linear_infinite]"  
+            role="status"
+            v-show="isLoading"
+          >
+            <span
+              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+              >Loading...</span
+            >
+          </div>
+        </button>
         <router-link
           to="/login"
           class="text-white font-[qsemibold] text-xl text-center rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
@@ -68,6 +85,7 @@ import * as Yup from 'yup'
 import { useAuthStore, type User } from '@/stores/auth'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 const registration = Yup.object().shape({
   name: Yup.string().required(),
@@ -82,11 +100,26 @@ const registration = Yup.object().shape({
 const store = useAuthStore()
 const router = useRouter()
 
+
+const submitButton = ref<HTMLButtonElement | null>(null)
+const isLoading= ref(false)
+
 const onSubmitRegister = async (values: any) => {
   values = values as User
   const credentials = { ...values, user_type: 'seller' }
   //   clear all errors
+  store.logout()
   store.errors = {}
+
+
+
+  if (submitButton.value) {
+    // eslint-disable-next-line
+    submitButton.value!.disabled = true
+    // Activate indicator
+    isLoading.value = true
+    submitButton.value.setAttribute('data-kt-indicator', 'on')
+  }
 
   //   registering
   await store.register(credentials)

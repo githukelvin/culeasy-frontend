@@ -14,7 +14,7 @@ import HomeFilter from '@/components/globals/HomeFilter.vue'
       <div class="hero w-vw">
         <HeroSection />
         <div class="lg:w-9/12 mt-[5em] lg:mx-auto">
-          <HomeFilter/>
+          <HomeFilter />
         </div>
       </div>
     </div>
