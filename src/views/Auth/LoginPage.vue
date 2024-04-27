@@ -16,15 +16,15 @@
       </VTextInput>
       <div class="flex text-xl flex-col gap-[1em] actions">
         <!-- <ButtonComponent> -->
-          <button
-    class="text-white disabled:bg-[#FF9E8C]-400 flex items-center justify-center gap-6   text-xl font-[qsemibold] text-base rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
-    type="submit"
-    ref="submitButton"
-  >
+        <button
+          class="text-white disabled:bg-[#FF9E8C]-400 flex items-center justify-center gap-6 text-xl font-[qsemibold] text-base rounded-[25px] py-[1em] bg-[#FF9E8C] w-full"
+          type="submit"
+          ref="submitButton"
+        >
           <span class="font-[qsemibold] text-2xl">Login</span>
 
           <div
-          class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-darkPurple border-e-transparent align-[-0.125em] text-success motion-reduce:animate-[spin_1.5s_linear_infinite]"  
+            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-darkPurple border-e-transparent align-[-0.125em] text-success motion-reduce:animate-[spin_1.5s_linear_infinite]"
             role="status"
             v-show="isLoading"
           >
@@ -69,10 +69,9 @@ const login = Yup.object().shape({
 const store = useAuthStore()
 const router = useRouter()
 const submitButton = ref<HTMLButtonElement | null>(null)
-const isLoading= ref(false)
+const isLoading = ref(false)
 const onSubmitLogin = async (values: any) => {
   values = values as User
-
 
   //   clear  existing error
   store.logout()
@@ -119,7 +118,6 @@ const onSubmitLogin = async (values: any) => {
   // eslint-disable-next-line
   submitButton.value!.disabled = false
   isLoading.value = false
-
 }
 </script>
 
