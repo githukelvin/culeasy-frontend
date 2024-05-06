@@ -2,25 +2,7 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-
-   <span class="indicator-label"> Continue </span>
-
-          <span class="indicator-progress">
-            Please wait...
-            <span
-              class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span>
- </span>
-
-
 ## Recommended IDE Setup
-
-
-
-
-
-
-
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS
